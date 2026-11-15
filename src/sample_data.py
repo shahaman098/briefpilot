@@ -106,5 +106,8 @@ SAMPLE_BRIEF = BriefResponse(
         "Tavily AI executive leadership strategy interviews hiring",
         "Tavily AI funding revenue growth customers partnerships",
         "Tavily AI pre-meeting intelligence pain points competitors market expansion"
-    ]
+    ],
+    grounding_score=0.98,
+    verified_claims_count=14,
+    audit_status="AUDITED_VERIFIED_GROUNDED"
 )

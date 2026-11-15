@@ -7,6 +7,7 @@ from src.pdf_generator import BriefPDFGenerator
 from src.tavily_agent import TavilyResearchAgent
 from src.main import app
 from src.cli import brief_to_markdown
+from src.bifrost_adapter import BifrostGatewayAdapter
 
 client = TestClient(app)
 
@@ -67,3 +68,9 @@ def test_markdown_export():
     assert "30-Day Fresh Intelligence Timeline" in md
     assert "High-Impact Talking Points" in md
     assert "Grounded Tavily Sources" in md
+
+def test_bifrost_adapter_fallback():
+    adapter = BifrostGatewayAdapter(base_url="http://127.0.0.1:9999/v1")
+    assert adapter.is_available() is False
+    res = adapter.route_completion("sys", "user")
+    assert res is None

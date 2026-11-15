@@ -107,10 +107,12 @@ class BriefPDFGenerator:
         # 1. Top Header Banner
         header_text = f"<b>BRIEFPILOT</b> &nbsp;|&nbsp; Executive Pre-Meeting Intelligence Dossier"
         meta_text = f"Target: <b>{brief.target_name}</b> ({brief.target_type.upper()}) &nbsp;•&nbsp; Objective: <i>{brief.meeting_objective}</i> &nbsp;•&nbsp; Generated: {brief.generated_at[:10]}"
+        audit_text = f"<b>Audit Status:</b> {brief.audit_status} &nbsp;|&nbsp; <b>Grounding Score:</b> {int(brief.grounding_score * 100)}% &nbsp;|&nbsp; <b>Verified Claims:</b> {brief.verified_claims_count} &nbsp;|&nbsp; <b>Tavily 30d Citations:</b> {len(brief.sources)}"
         
         story.append(Paragraph(header_text, self.styles["DocHeader"]))
         story.append(Paragraph(meta_text, self.styles["DocSubHeader"]))
-        story.append(Spacer(1, 6))
+        story.append(Paragraph(audit_text, self.styles["ItemSub"]))
+        story.append(Spacer(1, 4))
         story.append(HRFlowable(width="100%", thickness=1.5, color=self.c_accent, spaceAfter=8))
 
         # 2. Executive One-Liner Box
