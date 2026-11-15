@@ -1,0 +1,26 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+credentials*.json
+
+# Virtual Environment & Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Node / frontend
+node_modules/
+dist/
